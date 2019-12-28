@@ -21,46 +21,50 @@ class MapTest < Minitest::Test
   end
 
   def test_squares
-    skip
-    numbers = [1, 2, 3, 4, 5].map do |number|
-      number * number
+    numbers = [1, 2, 3, 4, 5] 
+    squares = numbers.map do |square|  
+      square * square
     end
     assert_equal [1, 4, 9, 16, 25], squares
   end
 
   def test_lengths
-    skip
     names = ["alice", "bob", "charlie", "david", "eve"].map do |name|
-      name.length?
+    name.length
     end
-    assert_equal [5, 3, 7, 5, 3], lengths
+    assert_equal [5, 3, 7, 5, 3], names
   end
 
-  def test_normalize_zip_codes
-    skip
+  def test_normalize_zip_codes 
     numbers = [234, 10, 9119, 38881]
-    # Your code goes here
+    zip_codes = numbers.map do |zip|  
+      zip.to_s.rjust(5,'0')
+    end
     assert_equal ["00234", "00010", "09119", "38881"], zip_codes
   end
 
   def test_backwards
-    skip
     names = ["alice", "bob", "charlie", "david", "eve"]
-    # Your code goes here
+     backwards = names.map do |name|
+        name.reverse
+      end
     assert_equal ["ecila", "bob", "eilrahc", "divad", "eve"], backwards
   end
 
   def test_words_with_no_vowels
-    skip
     words = ["green", "sheep", "travel", "least", "boat"]
-    # Your code goes here
+
+    without_vowels = words.map do |vowel|
+      vowel.delete('aeiou')
+    end
     assert_equal ["grn", "shp", "trvl", "lst", "bt"], without_vowels
   end
 
   def test_trim_last_letter
-    skip
     animals = ["dog", "cat", "mouse", "frog", "platypus"]
-    # Your code goes here
+    trimmed = animals.map do |animal|
+      animal.chop!
+    end
     assert_equal ["do", "ca", "mous", "fro", "platypu"], trimmed
   end
 
