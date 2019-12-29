@@ -12,39 +12,49 @@ class SortByTest < Minitest::Test
     assert_equal ["Bacon", "broccoli", "candy", "Carrots", "FISH"], sorted
   end
 
+  #########################
   def test_sort_alphabetically_by_last_letter
     things = ["pill", "box", "glass", "water", "sponge"]
     sorted = things.sort_by do |thing|
-      # Your code goes here
+      thing[-1]
     end
     assert_equal ["sponge", "pill", "water", "glass", "box"], sorted
   end
 
   def test_sort_by_distance
-    skip
     distances = ["1cm", "9cm", "30cm", "4cm", "2cm"]
-    # Your code goes here
+     sorted = distances.sort_by do |distance|
+      distance.to_i
+     end
     assert_equal ["1cm", "2cm", "4cm", "9cm", "30cm"], sorted
   end
 
   def test_sort_by_length
-    skip
     words = ["heteromorph", "ancyloceratina", "bioengineering", "mathematical", "bug"]
-    # Your code goes here
+    sorted = words.sort_by do |sort|
+      sort.length
+    end 
+
     assert_equal ["bug", "heteromorph", "mathematical", "ancyloceratina", "bioengineering"], sorted
   end
 
-  def test_sort_by_proximity_to_ten
-    skip
+  #####################
+  def test_sort_by_proximity_to_ten 
     prices = [3.02, 9.91, 17.9, 10.01, 11.0]
-    # Your code goes here
+    sorted = prices.sort_by do |sort|
+      (10.0 - sort).abs
+    end
+ 
     assert_equal [10.01, 9.91, 11.0, 3.02, 17.9], sorted
   end
 
+  
+##############################
   def test_sort_by_number_of_cents
-    skip
     prices = [3.02, 9.91, 7.9, 10.01, 11.0]
-    # Your code goes here
+    sorted = prices.sort_by do |sort|
+      sort - sort.floor
+    end 
     assert_equal [11.0, 10.01, 3.02, 7.9, 9.91], sorted
   end
 
